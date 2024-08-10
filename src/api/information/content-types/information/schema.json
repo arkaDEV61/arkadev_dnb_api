@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "informations",
+  "info": {
+    "singularName": "information",
+    "pluralName": "informations",
+    "displayName": "Information",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "cities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::city.city",
+      "inversedBy": "informations"
+    },
+    "majlis": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::majlis.majlis",
+      "inversedBy": "informations"
+    },
+    "masihats": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::masihat.masihat",
+      "inversedBy": "informations"
+    },
+    "permanent": {
+      "type": "boolean",
+      "default": false
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
+    },
+    "timeout": {
+      "type": "integer"
+    }
+  }
+}

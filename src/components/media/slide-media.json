@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_media_slide_medias",
+  "info": {
+    "displayName": "SlideMedia",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "youtube": {
+      "type": "string"
+    },
+    "image_source": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "video_source": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

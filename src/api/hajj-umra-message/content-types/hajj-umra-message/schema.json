@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hajj_umra_messages",
+  "info": {
+    "singularName": "hajj-umra-message",
+    "pluralName": "hajj-umra-messages",
+    "displayName": "HajjUmra Message"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "text"
+    },
+    "group_id": {
+      "type": "integer"
+    }
+  }
+}

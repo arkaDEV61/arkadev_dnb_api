@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hajj_app_contacts",
+  "info": {
+    "singularName": "hajj-app-contact",
+    "pluralName": "hajj-app-contacts",
+    "displayName": "HajjAppContact",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "vodics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "hajj-umra-vodic.hajj-umra-vodic"
+    },
+    "hajj_hotels_meka": {
+      "type": "component",
+      "repeatable": true,
+      "component": "hajj-umra-hotel.hajj-umra-hotel"
+    },
+    "hajj_hotels_medina": {
+      "type": "component",
+      "repeatable": true,
+      "component": "hajj-umra-hotel.hajj-umra-hotel"
+    }
+  }
+}

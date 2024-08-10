@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slides",
+  "info": {
+    "singularName": "slide",
+    "pluralName": "slides",
+    "displayName": "Slide",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::city.city",
+      "mappedBy": "slides"
+    },
+    "majlis": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::majlis.majlis",
+      "mappedBy": "slides"
+    },
+    "masihats": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::masihat.masihat",
+      "mappedBy": "slides"
+    },
+    "location": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "read_more": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string"
+    },
+    "title_de": {
+      "type": "string"
+    },
+    "timeout": {
+      "type": "integer",
+      "default": 40
+    },
+    "type": {
+      "type": "integer",
+      "default": 0
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "youtube": {
+      "type": "string"
+    },
+    "permanent": {
+      "type": "boolean",
+      "default": false
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

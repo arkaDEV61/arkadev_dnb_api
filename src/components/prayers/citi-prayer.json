@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_prayers_citi_prayers",
+  "info": {
+    "displayName": "CityPrayer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "fajr": {
+      "type": "time",
+      "default": "00:00"
+    },
+    "zuhr": {
+      "type": "time",
+      "default": "00:00"
+    },
+    "asr": {
+      "type": "time",
+      "default": "00:00"
+    },
+    "maghrib": {
+      "type": "time",
+      "default": "00:00"
+    },
+    "isha": {
+      "type": "time",
+      "default": "00:00"
+    }
+  }
+}

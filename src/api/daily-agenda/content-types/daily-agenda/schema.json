@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "daily_agendas",
+  "info": {
+    "singularName": "daily-agenda",
+    "pluralName": "daily-agendas",
+    "displayName": "Daily agenda",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "date": {
+      "type": "date"
+    },
+    "year": {
+      "type": "integer"
+    }
+  }
+}
