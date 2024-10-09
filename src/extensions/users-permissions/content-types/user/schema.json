@@ -65,18 +65,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "masihat": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::masihat.masihat",
-      "inversedBy": "users"
-    },
-    "city": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::city.city",
-      "inversedBy": "users"
-    },
     "majlis": {
       "type": "relation",
       "relation": "manyToOne",
@@ -94,6 +82,18 @@
     },
     "surname": {
       "type": "string"
+    },
+    "dzemat": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dzemat.dzemat",
+      "inversedBy": "users"
+    },
+    "muftijstvo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::muftijstvo.muftijstvo",
+      "inversedBy": "users"
     }
   }
 }

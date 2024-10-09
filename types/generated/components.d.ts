@@ -1,43 +1,12 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface HajjUmraHotelHajjUmraHotel extends Schema.Component {
-  collectionName: 'components_hajj_umra_hotel_hajj_umra_hotels';
+export interface TextText extends Schema.Component {
+  collectionName: 'components_text_texts';
   info: {
-    displayName: 'HajjUmraHotel';
-    description: '';
+    displayName: 'text';
   };
   attributes: {
-    title: Attribute.String;
-    address: Attribute.String;
-    longitude: Attribute.Float;
-    latitude: Attribute.Float;
-    city: Attribute.String;
-  };
-}
-
-export interface HajjUmraVodicHajjUmraVodic extends Schema.Component {
-  collectionName: 'components_hajj_umra_vodic_hajj_umra_vodics';
-  info: {
-    displayName: 'HajjUmraVodic';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    phone: Attribute.String;
-    group: Attribute.String;
-  };
-}
-
-export interface MediaSlideMedia extends Schema.Component {
-  collectionName: 'components_media_slide_medias';
-  info: {
-    displayName: 'SlideMedia';
-    description: '';
-  };
-  attributes: {
-    youtube: Attribute.String;
-    image_source: Attribute.Media;
-    video_source: Attribute.Media;
+    text: Attribute.String;
   };
 }
 
@@ -56,24 +25,25 @@ export interface PrayersCitiPrayer extends Schema.Component {
   };
 }
 
-export interface TextText extends Schema.Component {
-  collectionName: 'components_text_texts';
+export interface MediaSlideMedia extends Schema.Component {
+  collectionName: 'components_media_slide_medias';
   info: {
-    displayName: 'text';
+    displayName: 'SlideMedia';
+    description: '';
   };
   attributes: {
-    text: Attribute.String;
+    youtube: Attribute.String;
+    image_source: Attribute.Media<'images'>;
+    video_source: Attribute.Media<'videos'>;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'hajj-umra-hotel.hajj-umra-hotel': HajjUmraHotelHajjUmraHotel;
-      'hajj-umra-vodic.hajj-umra-vodic': HajjUmraVodicHajjUmraVodic;
-      'media.slide-media': MediaSlideMedia;
-      'prayers.citi-prayer': PrayersCitiPrayer;
       'text.text': TextText;
+      'prayers.citi-prayer': PrayersCitiPrayer;
+      'media.slide-media': MediaSlideMedia;
     }
   }
 }

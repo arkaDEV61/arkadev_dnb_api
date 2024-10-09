@@ -12,22 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "cities": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::city.city",
-      "mappedBy": "slides"
-    },
     "majlis": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::majlis.majlis",
-      "mappedBy": "slides"
-    },
-    "masihats": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::masihat.masihat",
       "mappedBy": "slides"
     },
     "location": {
@@ -82,6 +70,18 @@
     "public": {
       "type": "boolean",
       "default": false
+    },
+    "dzemats": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dzemat.dzemat",
+      "inversedBy": "slides"
+    },
+    "muftijstvos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::muftijstvo.muftijstvo",
+      "inversedBy": "slides"
     }
   }
 }

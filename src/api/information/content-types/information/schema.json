@@ -16,24 +16,12 @@
       "type": "string"
     },
     "date": {
-      "type": "date"
-    },
-    "cities": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::city.city",
-      "inversedBy": "informations"
+      "type": "datetime"
     },
     "majlis": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::majlis.majlis",
-      "inversedBy": "informations"
-    },
-    "masihats": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::masihat.masihat",
       "inversedBy": "informations"
     },
     "permanent": {
@@ -46,6 +34,18 @@
     },
     "timeout": {
       "type": "integer"
+    },
+    "dzemats": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dzemat.dzemat",
+      "mappedBy": "information"
+    },
+    "muftijstvos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::muftijstvo.muftijstvo",
+      "inversedBy": "information"
     }
   }
 }

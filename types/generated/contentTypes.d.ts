@@ -590,53 +590,6 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -770,16 +723,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    masihat: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'manyToOne',
-      'api::masihat.masihat'
-    >;
-    city: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'manyToOne',
-      'api::city.city'
-    >;
     majlis: Attribute.Relation<
       'plugin::users-permissions.user',
       'manyToOne',
@@ -792,6 +735,16 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     name: Attribute.String;
     surname: Attribute.String;
+    dzemat: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToOne',
+      'api::dzemat.dzemat'
+    >;
+    muftijstvo: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToOne',
+      'api::muftijstvo.muftijstvo'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -809,155 +762,53 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiCityCity extends Schema.CollectionType {
-  collectionName: 'cities';
+export interface ApiDzematDzemat extends Schema.CollectionType {
+  collectionName: 'dzemats';
   info: {
-    singularName: 'city';
-    pluralName: 'cities';
-    displayName: 'City';
+    singularName: 'dzemat';
+    pluralName: 'dzemats';
+    displayName: 'Dzemat';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    majlis: Attribute.Relation<
-      'api::city.city',
-      'manyToOne',
-      'api::majlis.majlis'
-    >;
-    slides: Attribute.Relation<
-      'api::city.city',
-      'manyToMany',
-      'api::slide.slide'
-    >;
-    active: Attribute.Boolean & Attribute.DefaultTo<false>;
-    vaktijaId: Attribute.Integer;
-    prayers: Attribute.Component<'prayers.citi-prayer'>;
     title: Attribute.String;
-    title_de: Attribute.String;
-    informations: Attribute.Relation<
-      'api::city.city',
-      'manyToMany',
-      'api::information.information'
-    >;
+    fajr_offset: Attribute.Integer;
+    dzuma: Attribute.Time;
     users: Attribute.Relation<
-      'api::city.city',
+      'api::dzemat.dzemat',
       'oneToMany',
       'plugin::users-permissions.user'
     >;
-    fajr_offset: Attribute.Integer;
-    dzuma: Attribute.Time;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::city.city', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::city.city', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiDailyAgendaDailyAgenda extends Schema.CollectionType {
-  collectionName: 'daily_agendas';
-  info: {
-    singularName: 'daily-agenda';
-    pluralName: 'daily-agendas';
-    displayName: 'Daily agenda';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    date: Attribute.Date;
-    year: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::daily-agenda.daily-agenda',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::daily-agenda.daily-agenda',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHajjAppContactHajjAppContact extends Schema.CollectionType {
-  collectionName: 'hajj_app_contacts';
-  info: {
-    singularName: 'hajj-app-contact';
-    pluralName: 'hajj-app-contacts';
-    displayName: 'HajjAppContact';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    vodics: Attribute.Component<'hajj-umra-vodic.hajj-umra-vodic', true>;
-    hajj_hotels_meka: Attribute.Component<
-      'hajj-umra-hotel.hajj-umra-hotel',
-      true
+    majlis: Attribute.Relation<
+      'api::dzemat.dzemat',
+      'manyToOne',
+      'api::majlis.majlis'
     >;
-    hajj_hotels_medina: Attribute.Component<
-      'hajj-umra-hotel.hajj-umra-hotel',
-      true
+    prayers: Attribute.Component<'prayers.citi-prayer'>;
+    information: Attribute.Relation<
+      'api::dzemat.dzemat',
+      'manyToOne',
+      'api::information.information'
+    >;
+    slides: Attribute.Relation<
+      'api::dzemat.dzemat',
+      'manyToMany',
+      'api::slide.slide'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::hajj-app-contact.hajj-app-contact',
+      'api::dzemat.dzemat',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::hajj-app-contact.hajj-app-contact',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHajjUmraMessageHajjUmraMessage
-  extends Schema.CollectionType {
-  collectionName: 'hajj_umra_messages';
-  info: {
-    singularName: 'hajj-umra-message';
-    pluralName: 'hajj-umra-messages';
-    displayName: 'HajjUmra Message';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    body: Attribute.Text;
-    group_id: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hajj-umra-message.hajj-umra-message',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hajj-umra-message.hajj-umra-message',
+      'api::dzemat.dzemat',
       'oneToOne',
       'admin::user'
     > &
@@ -978,25 +829,25 @@ export interface ApiInformationInformation extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String;
-    date: Attribute.Date;
-    cities: Attribute.Relation<
-      'api::information.information',
-      'manyToMany',
-      'api::city.city'
-    >;
+    date: Attribute.DateTime;
     majlis: Attribute.Relation<
       'api::information.information',
       'manyToMany',
       'api::majlis.majlis'
     >;
-    masihats: Attribute.Relation<
-      'api::information.information',
-      'manyToMany',
-      'api::masihat.masihat'
-    >;
     permanent: Attribute.Boolean & Attribute.DefaultTo<false>;
     public: Attribute.Boolean & Attribute.DefaultTo<false>;
     timeout: Attribute.Integer;
+    dzemats: Attribute.Relation<
+      'api::information.information',
+      'oneToMany',
+      'api::dzemat.dzemat'
+    >;
+    muftijstvos: Attribute.Relation<
+      'api::information.information',
+      'manyToMany',
+      'api::muftijstvo.muftijstvo'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1020,18 +871,13 @@ export interface ApiMajlisMajlis extends Schema.CollectionType {
   info: {
     singularName: 'majlis';
     pluralName: 'majlises';
-    displayName: 'Majlis';
+    displayName: 'Medzlis';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    cities: Attribute.Relation<
-      'api::majlis.majlis',
-      'oneToMany',
-      'api::city.city'
-    >;
     users: Attribute.Relation<
       'api::majlis.majlis',
       'oneToMany',
@@ -1042,18 +888,21 @@ export interface ApiMajlisMajlis extends Schema.CollectionType {
       'manyToMany',
       'api::slide.slide'
     >;
-    masihat: Attribute.Relation<
-      'api::majlis.majlis',
-      'manyToOne',
-      'api::masihat.masihat'
-    >;
-    active: Attribute.Boolean & Attribute.DefaultTo<false>;
     title: Attribute.String;
-    title_de: Attribute.String;
     informations: Attribute.Relation<
       'api::majlis.majlis',
       'manyToMany',
       'api::information.information'
+    >;
+    dzemats: Attribute.Relation<
+      'api::majlis.majlis',
+      'oneToMany',
+      'api::dzemat.dzemat'
+    >;
+    muftijstvo: Attribute.Relation<
+      'api::majlis.majlis',
+      'manyToOne',
+      'api::muftijstvo.muftijstvo'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1073,51 +922,50 @@ export interface ApiMajlisMajlis extends Schema.CollectionType {
   };
 }
 
-export interface ApiMasihatMasihat extends Schema.CollectionType {
-  collectionName: 'masihats';
+export interface ApiMuftijstvoMuftijstvo extends Schema.CollectionType {
+  collectionName: 'muftijstvos';
   info: {
-    singularName: 'masihat';
-    pluralName: 'masihats';
-    displayName: 'Masihat';
+    singularName: 'muftijstvo';
+    pluralName: 'muftijstvos';
+    displayName: 'Muftijstvo';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    slides: Attribute.Relation<
-      'api::masihat.masihat',
-      'manyToMany',
-      'api::slide.slide'
+    title: Attribute.String;
+    users: Attribute.Relation<
+      'api::muftijstvo.muftijstvo',
+      'oneToMany',
+      'plugin::users-permissions.user'
     >;
-    majlis: Attribute.Relation<
-      'api::masihat.masihat',
+    medzlises: Attribute.Relation<
+      'api::muftijstvo.muftijstvo',
       'oneToMany',
       'api::majlis.majlis'
     >;
-    title: Attribute.String;
-    title_de: Attribute.String;
-    informations: Attribute.Relation<
-      'api::masihat.masihat',
+    information: Attribute.Relation<
+      'api::muftijstvo.muftijstvo',
       'manyToMany',
       'api::information.information'
     >;
-    users: Attribute.Relation<
-      'api::masihat.masihat',
-      'oneToMany',
-      'plugin::users-permissions.user'
+    slides: Attribute.Relation<
+      'api::muftijstvo.muftijstvo',
+      'manyToMany',
+      'api::slide.slide'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::masihat.masihat',
+      'api::muftijstvo.muftijstvo',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::masihat.masihat',
+      'api::muftijstvo.muftijstvo',
       'oneToOne',
       'admin::user'
     > &
@@ -1137,20 +985,10 @@ export interface ApiSlideSlide extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    cities: Attribute.Relation<
-      'api::slide.slide',
-      'manyToMany',
-      'api::city.city'
-    >;
     majlis: Attribute.Relation<
       'api::slide.slide',
       'manyToMany',
       'api::majlis.majlis'
-    >;
-    masihats: Attribute.Relation<
-      'api::slide.slide',
-      'manyToMany',
-      'api::masihat.masihat'
     >;
     location: Attribute.String;
     date: Attribute.DateTime;
@@ -1160,11 +998,21 @@ export interface ApiSlideSlide extends Schema.CollectionType {
     title_de: Attribute.String;
     timeout: Attribute.Integer & Attribute.DefaultTo<40>;
     type: Attribute.Integer & Attribute.DefaultTo<0>;
-    image: Attribute.Media;
-    video: Attribute.Media;
+    image: Attribute.Media<'images'>;
+    video: Attribute.Media<'videos'>;
     youtube: Attribute.String;
     permanent: Attribute.Boolean & Attribute.DefaultTo<false>;
     public: Attribute.Boolean & Attribute.DefaultTo<false>;
+    dzemats: Attribute.Relation<
+      'api::slide.slide',
+      'manyToMany',
+      'api::dzemat.dzemat'
+    >;
+    muftijstvos: Attribute.Relation<
+      'api::slide.slide',
+      'manyToMany',
+      'api::muftijstvo.muftijstvo'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1234,17 +1082,13 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
-      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::city.city': ApiCityCity;
-      'api::daily-agenda.daily-agenda': ApiDailyAgendaDailyAgenda;
-      'api::hajj-app-contact.hajj-app-contact': ApiHajjAppContactHajjAppContact;
-      'api::hajj-umra-message.hajj-umra-message': ApiHajjUmraMessageHajjUmraMessage;
+      'api::dzemat.dzemat': ApiDzematDzemat;
       'api::information.information': ApiInformationInformation;
       'api::majlis.majlis': ApiMajlisMajlis;
-      'api::masihat.masihat': ApiMasihatMasihat;
+      'api::muftijstvo.muftijstvo': ApiMuftijstvoMuftijstvo;
       'api::slide.slide': ApiSlideSlide;
       'api::user-type.user-type': ApiUserTypeUserType;
     }

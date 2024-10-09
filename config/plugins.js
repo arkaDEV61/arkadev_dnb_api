@@ -1,6 +1,6 @@
 
 module.exports = ({ env }) => ({
-  upload: {
+  /*upload: {
       config: {
         provider: "strapi-provider-upload-do",
         providerOptions: {
@@ -12,7 +12,7 @@ module.exports = ({ env }) => ({
           cdn: env('DO_SPACE_CDN'),
         }
       },
-    },
+    },*/
     email: {
         config: {
           provider: 'nodemailer',

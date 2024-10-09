@@ -4,7 +4,7 @@
   "info": {
     "singularName": "majlis",
     "pluralName": "majlises",
-    "displayName": "Majlis",
+    "displayName": "Medzlis",
     "description": ""
   },
   "options": {
@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "cities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::city.city",
-      "mappedBy": "majlis"
-    },
     "users": {
       "type": "relation",
       "relation": "oneToMany",
@@ -30,20 +24,7 @@
       "target": "api::slide.slide",
       "inversedBy": "majlis"
     },
-    "masihat": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::masihat.masihat",
-      "inversedBy": "majlis"
-    },
-    "active": {
-      "type": "boolean",
-      "default": false
-    },
     "title": {
-      "type": "string"
-    },
-    "title_de": {
       "type": "string"
     },
     "informations": {
@@ -51,6 +32,18 @@
       "relation": "manyToMany",
       "target": "api::information.information",
       "mappedBy": "majlis"
+    },
+    "dzemats": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dzemat.dzemat",
+      "mappedBy": "majlis"
+    },
+    "muftijstvo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::muftijstvo.muftijstvo",
+      "inversedBy": "medzlises"
     }
   }
 }
