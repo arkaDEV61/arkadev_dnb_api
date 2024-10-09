@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "muftijstvos",
+  "info": {
+    "singularName": "muftijstvo",
+    "pluralName": "muftijstvos",
+    "displayName": "Muftijstvo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "muftijstvo"
+    },
+    "medzlises": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::majlis.majlis",
+      "mappedBy": "muftijstvo"
+    },
+    "information": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::information.information",
+      "mappedBy": "muftijstvos"
+    },
+    "slides": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::slide.slide",
+      "mappedBy": "muftijstvos"
+    }
+  }
+}

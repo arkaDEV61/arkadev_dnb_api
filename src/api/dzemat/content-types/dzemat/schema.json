@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dzemats",
+  "info": {
+    "singularName": "dzemat",
+    "pluralName": "dzemats",
+    "displayName": "Dzemat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "fajr_offset": {
+      "type": "integer"
+    },
+    "dzuma": {
+      "type": "time"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "dzemat"
+    },
+    "majlis": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::majlis.majlis",
+      "inversedBy": "dzemats"
+    },
+    "prayers": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prayers.citi-prayer"
+    },
+    "information": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::information.information",
+      "inversedBy": "dzemats"
+    },
+    "slides": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::slide.slide",
+      "mappedBy": "dzemats"
+    }
+  }
+}
