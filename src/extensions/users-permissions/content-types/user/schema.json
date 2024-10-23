@@ -71,9 +71,9 @@
       "target": "api::majlis.majlis",
       "inversedBy": "users"
     },
-    "user_type": {
+    "user_types": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::user-type.user-type",
       "inversedBy": "users_permissions_users"
     },

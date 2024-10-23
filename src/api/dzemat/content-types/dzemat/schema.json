@@ -49,6 +49,25 @@
       "relation": "manyToMany",
       "target": "api::slide.slide",
       "mappedBy": "dzemats"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "vaktija_id": {
+      "type": "integer"
+    },
+    "fajr_after_dawn": {
+      "type": "boolean"
+    },
+    "app_fajr_settings": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

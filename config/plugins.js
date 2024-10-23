@@ -13,6 +13,40 @@ module.exports = ({ env }) => ({
         }
       },
     },*/
+   /* upload: {
+        config: {
+          provider: "strapi4-ftp-provider",
+          providerOptions: {
+            host: env("FTP_HOST"),
+            port: env("FTP_PORT"),
+            user: env("FTP_USER"),
+            password: env("FTP_PASSWORD"),
+            secure: env.bool("FTP_SECURE", false),
+            path: env("FTP_BASE_PATH"),
+            baseUrl: env("FTP_BASE_URL"),
+          },
+        },
+      },*/
+      upload: {
+        config: {
+          provider: "strapi-provider-upload-ftp-v2",
+          providerOptions: {
+            host: env("FTP_HOST"),
+            port: env("FTP_PORT"),
+            user: env("FTP_USER"),
+            password: env("FTP_PASSWORD"),
+            basePath: env("FTP_BASE_PATH"),
+            baseUrl: env("FTP_BASE_URL"),
+          },
+          breakpoints: {
+                  xlarge: 1920,
+                  large: 1000,
+                  medium: 750,
+                  small: 500,
+                  xsmall: 64
+                },
+        },
+      },
     email: {
         config: {
           provider: 'nodemailer',

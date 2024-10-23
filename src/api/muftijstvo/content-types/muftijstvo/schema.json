@@ -38,6 +38,14 @@
       "relation": "manyToMany",
       "target": "api::slide.slide",
       "mappedBy": "muftijstvos"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

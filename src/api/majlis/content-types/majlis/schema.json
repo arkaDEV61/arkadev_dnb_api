@@ -44,6 +44,14 @@
       "relation": "manyToOne",
       "target": "api::muftijstvo.muftijstvo",
       "inversedBy": "medzlises"
+    },
+    "logo": {
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
