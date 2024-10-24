@@ -13,6 +13,7 @@ module.exports = [
             'blob:',
             'dl.airtable.com',
             '*.digitaloceanspaces.com',
+            process.env.FTP_DOMAIN,
           ],
           'media-src': [
             "'self'",
@@ -27,7 +28,10 @@ module.exports = [
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+  	config: { enabled: false }
+  },
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
