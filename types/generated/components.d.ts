@@ -1,17 +1,30 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
+
+export interface MediaSlideMedia extends Struct.ComponentSchema {
+  collectionName: 'components_media_slide_medias';
+  info: {
+    description: '';
+    displayName: 'SlideMedia';
+  };
+  attributes: {
+    image_source: Schema.Attribute.Media<'images'>;
+    video_source: Schema.Attribute.Media<'videos'>;
+    youtube: Schema.Attribute.String;
+  };
+}
 
 export interface PrayersCitiPrayer extends Struct.ComponentSchema {
   collectionName: 'components_prayers_citi_prayers';
   info: {
-    displayName: 'CityPrayer';
     description: '';
+    displayName: 'CityPrayer';
   };
   attributes: {
-    fajr: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
-    zuhr: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
     asr: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
-    maghrib: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
+    fajr: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
     isha: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
+    maghrib: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
+    zuhr: Schema.Attribute.Time & Schema.Attribute.DefaultTo<'00:00'>;
   };
 }
 
@@ -25,25 +38,12 @@ export interface TextText extends Struct.ComponentSchema {
   };
 }
 
-export interface MediaSlideMedia extends Struct.ComponentSchema {
-  collectionName: 'components_media_slide_medias';
-  info: {
-    displayName: 'SlideMedia';
-    description: '';
-  };
-  attributes: {
-    youtube: Schema.Attribute.String;
-    image_source: Schema.Attribute.Media<'images'>;
-    video_source: Schema.Attribute.Media<'videos'>;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'media.slide-media': MediaSlideMedia;
       'prayers.citi-prayer': PrayersCitiPrayer;
       'text.text': TextText;
-      'media.slide-media': MediaSlideMedia;
     }
   }
 }

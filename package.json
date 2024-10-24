@@ -10,17 +10,18 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/email": "^5.1.0",
-    "@strapi/plugin-cloud": "^5.1.0",
-    "@strapi/plugin-users-permissions": "^5.1.0",
-    "@strapi/provider-email-nodemailer": "^5.1.0",
-    "@strapi/strapi": "^5.1.0",
+    "@strapi/email": "^5.1.1",
+    "@strapi/plugin-cloud": "^5.1.1",
+    "@strapi/plugin-users-permissions": "^5.1.1",
+    "@strapi/provider-email-nodemailer": "^5.1.1",
+    "@strapi/strapi": "^5.1.1",
     "mysql2": "^3.11.3",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "sharp": "^0.33.2",
+    "strapi-provider-ftp-upload": "^1.0.4",
     "strapi-provider-upload-ftp-v2": "^1.1.2",
     "strapi4-ftp-provider": "^1.0.5",
     "styled-components": "^6.0.0"
