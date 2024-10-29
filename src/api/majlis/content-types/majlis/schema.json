@@ -33,12 +33,6 @@
       "target": "api::information.information",
       "mappedBy": "majlis"
     },
-    "dzemats": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::dzemat.dzemat",
-      "mappedBy": "majlis"
-    },
     "muftijstvo": {
       "type": "relation",
       "relation": "manyToOne",
@@ -52,6 +46,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "dzemats": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dzemat.dzemat",
+      "mappedBy": "majlis"
     }
   }
 }
