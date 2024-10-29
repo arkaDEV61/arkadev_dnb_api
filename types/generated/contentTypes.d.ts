@@ -390,7 +390,7 @@ export interface ApiDzematDzemat extends Struct.CollectionTypeSchema {
     fajr_after_dawn: Schema.Attribute.Boolean;
     fajr_offset: Schema.Attribute.Integer;
     information: Schema.Attribute.Relation<
-      'manyToOne',
+      'manyToMany',
       'api::information.information'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -400,7 +400,7 @@ export interface ApiDzematDzemat extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images' | 'files'>;
-    majlis: Schema.Attribute.Relation<'manyToOne', 'api::majlis.majlis'>;
+    majlis: Schema.Attribute.Relation<'manyToMany', 'api::majlis.majlis'>;
     prayers: Schema.Attribute.Component<'prayers.citi-prayer', false>;
     publishedAt: Schema.Attribute.DateTime;
     slides: Schema.Attribute.Relation<'manyToMany', 'api::slide.slide'>;
@@ -432,7 +432,7 @@ export interface ApiInformationInformation extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.DateTime;
-    dzemats: Schema.Attribute.Relation<'oneToMany', 'api::dzemat.dzemat'>;
+    dzemats: Schema.Attribute.Relation<'manyToMany', 'api::dzemat.dzemat'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -470,7 +470,7 @@ export interface ApiMajlisMajlis extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dzemats: Schema.Attribute.Relation<'oneToMany', 'api::dzemat.dzemat'>;
+    dzemats: Schema.Attribute.Relation<'manyToMany', 'api::dzemat.dzemat'>;
     informations: Schema.Attribute.Relation<
       'manyToMany',
       'api::information.information'

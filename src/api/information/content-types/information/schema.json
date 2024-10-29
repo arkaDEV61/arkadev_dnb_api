@@ -35,17 +35,17 @@
     "timeout": {
       "type": "integer"
     },
-    "dzemats": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::dzemat.dzemat",
-      "mappedBy": "information"
-    },
     "muftijstvos": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::muftijstvo.muftijstvo",
       "inversedBy": "information"
+    },
+    "dzemats": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dzemat.dzemat",
+      "mappedBy": "information"
     }
   }
 }
