@@ -29,7 +29,7 @@
     },
     "majlis": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::majlis.majlis",
       "inversedBy": "dzemats"
     },
