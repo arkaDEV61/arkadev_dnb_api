@@ -73,8 +73,6 @@ module.exports = ({ env }) => {
 
 
 
-
-
 //TODO ovo je za localhost pgAdmin
 /*module.exports = ({ env }) => {
   return {
